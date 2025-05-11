@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>⬛️ ĐɆ₳₮Ⱨ₵ɄⱠ₮ ⬛️</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: url('cultdeath.png') no-repeat center center/cover;
+      background-color: black;
+      color: red;
+      font-family: 'Cinzel Decorative', cursive;
+      overflow-x: hidden;
+      font-size: 18px;
+      position: relative;
+      z-index: 1;
+    }
+    header {
+      text-align: center;
+      font-size: 50px;
+      color: white;
+      text-shadow: 2px 2px 10px red;
+      margin-top: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.7);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+    section {
+      padding: 40px;
+      border-bottom: 1px solid #333;
+      animation: slideIn 1.5s ease-in-out;
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    h2 {
+      color: red;
+      margin-bottom: 20px;
+    }
+    .log, .profile {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      color: red;
+      border-left: 4px solid red;
+      font-family: monospace;
+    }
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: red;
+      padding: 20px;
+      border-top: 1px solid red;
+      font-family: monospace;
+    }
+    #lockscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('cult.png') no-repeat center center/cover;
+  color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+    #lockscreen input {
+      padding: 10px;
+      background: black;
+      border: 1px solid red;
+      color: red;
+      margin-top: 10px;
+    }
+    .btn {
+      background: linear-gradient(45deg, red, #8B0000);
+      color: white;
+      padding: 15px 30px;
+      border: 2px solid red;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    }
+    .btn:hover {
+      background: linear-gradient(45deg, #8B0000, red);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+      color: #111;
+    }
+    .btn-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .btn-container button {
+      margin-top: 15px;
+      font-size: 20px;
+      width: 250px;
+    }
+    a {
+      color: red;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    } 
+
+    @keyframes glitchEffect {
+  0% { text-shadow: 2px 2px 5px red, -2px -2px 5px darkred; }
+  25% { text-shadow: -2px -2px 5px crimson, 2px 2px 5px darkred; }
+  50% { text-shadow: 2px 2px 5px darkred, -2px -2px 5px crimson; }
+  75% { text-shadow: -2px -2px 5px red, 2px 2px 5px darkred; }
+  100% { text-shadow: 2px 2px 5px darkred, -2px -2px 5px red; }
+}
+
+.scary-title {
+  font-size: 3.5rem;
+  color: red;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px red, -2px -2px 5px darkred;
+  animation: glitchEffect 1s infinite;
+}
+.welcome-message {
+  text-align: center;
+  color: red;
+  font-family: 'Cinzel Decorative', cursive;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  border: 2px solid red;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+  z-index: 999;
+  animation: slideIn 2s ease-in-out;
+}
+
+.hacking-text p {
+  font-size: 28px;
+  color: red;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px red, -2px -2px 5px darkred;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  border-right: 3px solid red;
+  animation: typing 5s steps(40) 1s forwards, blink 0.75s step-end infinite;
+}
+
+.btn {
+  background: linear-gradient(45deg, red, #8B0000);
+  color: white;
+  padding: 15px 30px;
+  border: 2px solid red;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}
+
+.btn:hover {
+  background: linear-gradient(45deg, #8B0000, red);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+  color: #111;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+section {
+  padding: 40px;
+  border-bottom: 1px solid #333;
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+section.active {
+  display: block;
+  opacity: 1;
+}
+
+ul li {
+  list-style-type: '𒉭';
+  margin: 10px 0;
+  padding: 5px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+ul li:hover {
+  color: white;
+  transform: translateX(5px) scale(1.02);
+  text-shadow: 0 0 10px red;
+}
+
+.overlay {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(50, 0, 0, 0.7));
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+h2 {
+  color: red;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px darkred;
+  position: relative;
+}
+h2::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: red;
+  margin-top: 10px;
+  box-shadow: 0 0 10px red;
+}
+
+.scary-title {
+  font-size: 3.5rem;
+  color: red;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px red, -2px -2px 5px darkred;
+  animation: glitchEffect 1s infinite, pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    text-shadow: 0 0 10px red, 0 0 20px darkred;
+  }
+  to {
+    text-shadow: 0 0 20px red, 0 0 40px darkred;
+  }
+}
+.settings-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    #settingsPanel {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.95);
+      border: 2px solid red;
+      color: red;
+      padding: 20px;
+      width: 250px;
+      border-radius: 10px;
+      z-index: 1001;
+    }
+
+    #settingsPanel label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #settingsPanel select, #settingsPanel input {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 15px;
+      background: black;
+      color: red;
+      border: 1px solid red;
+    }
+
+    #saveSettings {
+      background: darkred;
+      border: 1px solid red;
+      padding: 10px;
+      width: 100%;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="lockscreen">
+    <h1>Access Restricted</h1>
+    <p>Enter password to continue:</p>
+    <input type="password" id="password" placeholder="••••••">
+    <button class="btn" onclick="checkPassword()">Enter</button>
+    <p style="margin-top: 20px; cursor: pointer; font-style: italic; color: darkred; text-shadow: 0 0 5px red;" onclick="forgotPassword()">💀 Show me the Truth 💀</p>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  </div>
+  <div class="overlay"></div>
+  <header class="scary-title" id="cultTitle">⬛️ ĐɆ₳₮Ⱨ₵ɄⱠ₮ ⬛️ </header>
+
+
+<div class="welcome-message">
+  <div class="hacking-text">
+    <p id="message"></p>
+  </div>
+  <button class="btn" id="agreeButton" style="display: none;">Continue</button>
+</div>
+
+  <div class="btn-container">
+    <button class="btn" onclick="showSection('about')">About</button>
+    <button class="btn" onclick="showSection('cult')">Cult Members</button>
+    <button class="btn" onclick="showSection('enemies')">Enemies</button>
+    <button class="btn" onclick="showSection('respect')">Respect For</button>
+    <button class="btn" onclick="window.open('https://discord.gg/QC2fsTRQ', '_blank')">Join Discord</button>
+    <button class="btn" onclick="showSection('updates')">Coming Updates</button>
+  </div>
+   <!-- Settings Button -->
+   <button class="btn settings-btn" onclick="toggleSettings()">⚙️ Settings</button>
+   <!-- Settings Panel -->
+   <div id="settingsPanel">
+     <label for="fontSize">Font Size:</label>
+     <select id="fontSize">
+       <option value="16px">Small</option>
+       <option value="18px">Default</option>
+       <option value="22px">Large</option>
+       <option value="26px">Extra Large</option>
+     </select>
+     <button id="saveSettings">Save</button>
+   </div> 
+  <section id="about">
+    <h2>About Aiden</h2>
+    <p class="log">I am Aiden, the embodiment of judgment in a world ruled by digital chaos...</p>
+    <br>
+    <h2>about cult</h2>
+    <p class="log">We are the Cult. Forged in shadows, rising to dominate—this game is our domain. With precision, power, and unrelenting strategy, we bend the rules to our will. Our tools are weapons, our minds are sharp, and our goal is simple: to reshape this broken world into our own. Join us—or be crushed beneath the weight of our ambition.</p>
+    <br>
+    <h2>Our goals</h2>
+    <p class="log">We don’t play for fun—we play for control. Our eyes are locked on Taming Breaker Down, and we won’t stop until we rule it entirely. Every battle is a step closer to domination. Every player is either an ally to be used—or a slave to be broken.<br>
+      We aim to:<br>
+      • Win Relentlessly.<br>
+      • Crush every rival clan.<br>
+      • Make the strongest players kneel.<br>
+      • Build a community of loyalty and fear.</p>
+    <br>
+    <h2>Warning</h2>
+    <p class="log">This web is made by me (Aiden) and got a lot of support from Ligma. We won’t let any stranger know about this. Only cult members are allowed to be here. If someone betrays, they will get kicked.</p>
+  </section>
+
+  <section id="enemies">
+      <h2>Enemies</h2>
+      <div class="log">
+        <strong>Name:</strong> 5obza<br>
+        <strong>Crime:</strong> Betrayed after using me<br>
+        <strong>Judgment:</strong> Banished from system - No return allowed.
+      </div>
+      <div class="log">
+        <strong>Name:</strong> clan 31<br>
+        <strong>Crime:</strong> no reason<br>
+        <strong>Judgment:</strong> Initiating countermeasures - The war is inevitable.
+      </div>
+      <hr color="red">
+      <p class="log">Sorry im still working in an easy way to add enemies but for now just tell me in discord. thanks for ur patience</p>
+    </section>
+  </section>
+
+  <section id="updates">
+    <h2>Coming Update:</h2>
+    <div class="log">
+      <p><strong>Updates:</strong> Enemy add<br><strong>What’s this:</strong> It’s a database that will manage to help anyone in the cult add their enemy there.</p>
+    </div>
+    <hr color="red">
+    <div class="log">
+      <p><strong>Updates:</strong> Password recovery:<br><strong>What’s this:</strong> It’s an easy way to get back the password without asking in Discord, just by putting your cult name there.</p>
+    </div>
+  </section>
+  
+
+  <section id="cult">
+    <h2>Cult Members</h2>
+    <ul>
+      <li>⬛ ╠║╣ ⱠI₲₥₳ ⬛</li>
+      <li>⬛ ╔║╗ ₳IĐɆ₦ ⬛</li>
+      <li>⬛ ╚║╝ FɆⱤI₮ ⬛</li>
+      <li>⬛ ╚║╝ Ɽ₦₥ ⬛</li>
+      <li>⬛ ╔║╗ ₱₳ⱤⱤØ₮⬛</li>
+      <li>⬛ ╔║╗ ⱤØ₵₭ɆⱤ ⬛</li>
+      <li>⬛ ╔║╗ 卄4₭ ⬛</li>
+      <li>⬛ ╔║╗ FF10 ⬛</li>
+      <li>⬛ ╔║╗ ₵₳₥ⱠɄⱧ ⬛</li>
+      <li>⬛ ╔║╗ ₴ɄⱤ₲Ɇ ⬛</li>
+      <li>⬛ ╔║╗ VØⱤ₮ɆӾӾ ⬛</li>
+      <li>⬛ ╔║╗ ӾØɎI₳ ⬛</li>
+      <li>⬛ ╔║╗ ĐɎ₦₳₴₮ ⬛</li>
+      <li>⬛ ╔║╗ ĐŞŦŔᎩŔ ⬛</li>
+      <li>⬛ ╔║╗ ⱧØI ⬛</li>
+      <li>⬛ ╔║╗ ₴₭ØⱤ₱łØ₦ ⬛</li>
+      <li>⬛ ╔║╗₦ɄĐɆⱠ₴Ʉ₱₱Ɇ ⬛</li>
+    </ul>
+    <br>
+    <h2>Cult Links</h2>
+    <div class="profile">
+      <a href="https://deathcult.super.site/cultname" target="_blank">⬛️ ĐɆ₳₮Ⱨ₵ɄⱠ₮ ⬛️ Sacred Cult Name ⬛️</a>
+    </div>
+    <div class="profile">
+      <a href="https://deathcult.super.site/leaderboard" target="_blank">⬛️ ĐɆ₳₮Ⱨ₵ɄⱠ₮ ⬛️ Leaderboard ⬛️</a>
+    </div>
+    <div class="profile">
+      <a href="https://deathcult.super.site/kdr" target="_blank">⬛️ ĐɆ₳₮Ⱨ₵ɄⱠ₮ ⬛️ KDR Calculator ⬛️</a>
+    </div>
+  </section>
+
+  <section id="respect">
+    <h2>Respect For</h2>
+    <p class="log">
+      Memorial for our brothers no longer in-game:<br>
+      <strong>𒉭High Id:</strong><br>1010335<br>
+      <strong>𒉭Bugs Id:</strong><br>1010329<br>
+      <strong>𒉭Yeetsticke Id:</strong> <br>1350956<br>
+      <strong>𒉭Our legend:</strong><br> YT-BOSS SLAYER id: 651681
+    </p>
+  </section>
+
+  <div class="footer">Powered by Aiden | Judgment is final | 2025</div>
+
+  <script>
+   function toggleSettings() {
+      const panel = document.getElementById('settingsPanel');
+      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    }
+    function applySettings() {
+      const fontSize = localStorage.getItem('fontSize') || '18px';
+      document.body.style.fontSize = fontSize;
+      document.getElementById('fontSize').value = fontSize;
+    }
+
+    document.getElementById('saveSettings').addEventListener('click', () => {
+      const fontSize = document.getElementById('fontSize').value;
+      
+      localStorage.setItem('fontSize', fontSize);
+
+      applySettings();
+      alert('Settings saved!');
+    });
+    // Apply saved settings on load
+    window.onload = applySettings;
+    const encodedPass = "a2lyYTIwMjU="; // Base64 of "kira2025"
+
+    function checkPassword() {
+      const input = document.getElementById("password").value;
+      const encodedInput = btoa(input);
+      if (encodedInput === encodedPass) {
+        const lock = document.getElementById("lockscreen");
+        lock.style.transition = "opacity 1s ease";
+        lock.style.opacity = 0;
+        setTimeout(() => lock.style.display = "none", 1000);
+        document.body.style.overflow = "auto";
+      } else {
+        alert("Incorrect password!");
+      }
+    }
+
+    function forgotPassword() {
+      alert("The forgotten must seek guidance from the DeathCult.\nDiscord: stk_aidenvx or Deathcult server\nOnly the worthy may return.");
+    }
+
+    function hideSections() {
+      document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+    }
+
+    function showSection(id) {
+      hideSections();
+      document.getElementById(id).classList.add("active");
+    }
+
+const cultTitle = document.getElementById("cultTitle");
+const originalText = cultTitle.textContent;
+
+function glitchText() {
+  const chars = 'ⱤɄ₮Ɇ₳₣₭₦ØⱧĐɆ₳₮Ⱨ₵ɄⱠ₮⬛️0123456789';
+  let glitched = '';
+  for (let i = 0; i < originalText.length; i++) {
+    if (Math.random() < 0.2 && originalText[i] !== ' ') {
+      glitched += chars[Math.floor(Math.random() * chars.length)];
+    } else {
+      glitched += originalText[i];
+    }
+  }
+  cultTitle.textContent = glitched;
+  setTimeout(() => {
+    cultTitle.textContent = originalText;
+  }, 100);
+}
+setInterval(glitchText, 800);
+const messageText = "Welcome in our Cursed Web.";
+function showMessage() {
+  let i = 0;
+  const messageElement = document.getElementById("message");
+  const agreeButton = document.getElementById("agreeButton");
+  messageElement.innerHTML = '';
+  const interval = setInterval(() => {
+    messageElement.innerHTML += messageText[i];
+    i++;
+    if (i === messageText.length) {
+      clearInterval(interval); 
+      agreeButton.style.display = "block"; 
+    }
+  }, 50); 
+}
+window.onload = showMessage;
+document.getElementById("agreeButton").addEventListener("click", () => {
+  document.querySelector(".welcome-message").style.display = "none";
+});
+  </script>
