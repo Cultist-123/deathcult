@@ -283,22 +283,28 @@ h2::after {
       top: 20px;
       right: 20px;
       z-index: 1000;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
     }
 
     #settingsPanel {
-      display: none;
-      position: fixed;
-      top: 80px;
-      right: 20px;
-      background: rgba(0, 0, 0, 0.95);
-      border: 2px solid red;
-      color: red;
-      padding: 20px;
-      width: 250px;
-      border-radius: 10px;
-      z-index: 1001;
-    }
-
+  display: none;
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('lapa.png') no-repeat center center/cover;
+  font-family: sans-serif;
+  border: 2px solid red;
+  color: red;
+  padding: 30px;
+  width: 400px;  
+  height: 400px; 
+  border-radius: 10px;
+  z-index: 1001;
+  box-shadow: 0 0 20px red;
+}
     #settingsPanel label {
       display: block;
       margin-bottom: 10px;
@@ -320,6 +326,7 @@ h2::after {
       width: 100%;
       color: white;
       cursor: pointer;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -344,12 +351,12 @@ h2::after {
 </div>
 
   <div class="btn-container">
-    <button class="btn" onclick="showSection('about')">About</button>
+    <button class="btn" onclick="showSection('about')">Cult Info</button>
     <button class="btn" onclick="showSection('cult')">Cult Members</button>
     <button class="btn" onclick="showSection('enemies')">Enemies</button>
     <button class="btn" onclick="showSection('respect')">Respect For</button>
-    <button class="btn" onclick="window.open('https://discord.gg/QC2fsTRQ', '_blank')">Join Discord</button>
     <button class="btn" onclick="showSection('updates')">Coming Updates</button>
+    <button class="btn" onclick="window.open('https://discord.gg/QC2fsTRQ', '_blank')">Join Discord</button>
   </div>
    <!-- Settings Button -->
    <button class="btn settings-btn" onclick="toggleSettings()">⚙️ Settings</button>
@@ -381,8 +388,12 @@ h2::after {
     <br>
     <h2>Warning</h2>
     <p class="log">This web is made by me (Aiden) and got a lot of support from Ligma. We won’t let any stranger know about this. Only cult members are allowed to be here. If someone betrays, they will get kicked.</p>
+    <h2>Cult Rules</h2>
+    <p class="log">1. Loyalty is mandatory.<br>
+    2. Do not share this website outside the cult.<br>
+    3. Enemies must be reported instantly.<br>
+    4. Respect the hierarchy. Ligma leads.</p>
   </section>
-
   <section id="enemies">
       <h2>Enemies</h2>
       <div class="log">
@@ -399,7 +410,6 @@ h2::after {
       <p class="log">Sorry im still working in an easy way to add enemies but for now just tell me in discord. thanks for ur patience</p>
     </section>
   </section>
-
   <section id="updates">
     <h2>Coming Update:</h2>
     <div class="log">
