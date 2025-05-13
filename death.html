@@ -336,7 +336,7 @@ h2::after {
     <p>Enter password to continue:</p>
     <input type="password" id="password" placeholder="••••••">
     <button class="btn" onclick="checkPassword()">Enter</button>
-    <p style="margin-top: 20px; cursor: pointer; font-style: italic; color: darkred; text-shadow: 0 0 5px red;" onclick="forgotPassword()">💀 Show me the Truth 💀</p>
+    <p style="margin-top: 20px; cursor: pointer; font-style: italic; color: darkred; text-shadow: 0 0 5px red;" onclick="givePassword()">💀 Show me the Truth 💀</p>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
   </div>
   <div class="overlay"></div>
@@ -386,13 +386,13 @@ h2::after {
       • Make the strongest players kneel.<br>
       • Build a community of loyalty and fear.</p>
     <br>
-    <h2>Warning</h2>
-    <p class="log">This web is made by me (Aiden) and got a lot of support from Ligma. We won’t let any stranger know about this. Only cult members are allowed to be here. If someone betrays, they will get kicked.</p>
     <h2>Cult Rules</h2>
     <p class="log">1. Loyalty is mandatory.<br>
     2. Do not share this website outside the cult.<br>
     3. Enemies must be reported instantly.<br>
     4. Respect the hierarchy. Ligma leads.</p>
+    <h2>Warning</h2>
+    <p class="log">This web is made by me (Aiden) and got a lot of support from Ligma. We won’t let any stranger know about this. Only cult members are allowed to be here. If someone betrays, they will get kicked.</p>
   </section>
   <section id="enemies">
       <h2>Enemies</h2>
@@ -454,6 +454,9 @@ h2::after {
     <div class="profile">
       <a href="https://deathcult.super.site/kdr" target="_blank">⬛️ ĐɆ₳₮Ⱨ₵ɄⱠ₮ ⬛️ KDR Calculator ⬛️</a>
     </div>
+    <div class="profile">
+      <a href="https://deathcult.super.site/xlpmvx" target="_blank">⬛️ ĐɆ₳₮Ⱨ₵ɄⱠ₮ ⬛️ The Truth  ⬛️</a>
+    </div>
   </section>
 
   <section id="respect">
@@ -467,7 +470,7 @@ h2::after {
     </p>
   </section>
 
-  <div class="footer">Powered by Aiden | Judgment is final | 2025</div>
+  <div class="footer">Powered by Aiden | Judgment is final| 2025</div>
 
   <script>
    function toggleSettings() {
@@ -505,10 +508,34 @@ h2::after {
         alert("Incorrect password!");
       }
     }
+const validNames = [
+  "⬛ ╠║╣ ⱠI₲₥₳ ⬛",
+  "⬛ ╔║╗ ₳IĐɆ₦ ⬛",
+  "⬛ ╚║╝ FɆⱤI₮ ⬛",
+  "⬛ ╚║╝ Ɽ₦₥ ⬛",
+  "⬛ ╔║╗ ₱₳ⱤⱤØ₮⬛",
+  "⬛ ╔║╗ ⱤØ₵₭ɆⱤ ⬛",
+  "⬛ ╔║╗ 卄4₭ ⬛",
+  "⬛ ╔║╗ FF10 ⬛",
+  "⬛ ╔║╗ ₵₳₥ⱠɄⱧ ⬛",
+  "⬛ ╔║╗ ₴ɄⱤ₲Ɇ ⬛",
+  "⬛ ╔║╗ VØⱤ₮ɆӾӾ ⬛",
+  "⬛ ╔║╗ ӾØɎI₳ ⬛",
+  "⬛ ╔║╗ ĐɎ₦₳₴₮ ⬛",
+  "⬛ ╔║╗ ĐŞŦŔᎩŔ ⬛",
+  "⬛ ╔║╗ ⱧØI ⬛",
+  "⬛ ╔║╗ ₴₭ØⱤ₱łØ₦ ⬛",
+  "⬛ ╔║╗₦ɄĐɆⱠ₴Ʉ₱₱Ɇ ⬛"
+];
 
-    function forgotPassword() {
-      alert("The forgotten must seek guidance from the DeathCult.\nDiscord: stk_aidenvx or Deathcult server\nOnly the worthy may return.");
-    }
+function givePassword() {
+  const input = prompt("Enter your cult name in discord:");
+  if (input && validNames.includes(input.trim())) {
+    alert(" 💀Welcome cultist,Your code is: kira2025💀");
+  } else {
+    alert("⬛️ Access denied. Name not found.⬛️");
+  }
+}
 
     function hideSections() {
       document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
