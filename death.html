@@ -342,7 +342,6 @@ h2::after {
   <div class="overlay"></div>
   <header class="scary-title" id="cultTitle">⬛️ ĐɆ₳₮Ⱨ₵ɄⱠ₮ ⬛️ </header>
 
-
 <div class="welcome-message">
   <div class="hacking-text">
     <p id="message"></p>
@@ -417,7 +416,7 @@ h2::after {
     </div>
     <hr color="red">
     <div class="log">
-      <p><strong>Updates:</strong> Password recovery:<br><strong>What’s this:</strong> It’s an easy way to get back the password without asking in Discord, just by putting your cult name there.</p>
+      <p><strong>Updates:</strong> Password recovery:<br><strong>What’s this:</strong> It’s an easy way to get back the password without asking in Discord, just by putting your cult name there.<br>💀its done💀</p>
     </div>
   </section>
   
@@ -491,23 +490,10 @@ h2::after {
       applySettings();
       alert('Settings saved!');
     });
-    // Apply saved settings on load
     window.onload = applySettings;
-    const encodedPass = "a2lyYTIwMjU="; // Base64 of "kira2025"
 
-    function checkPassword() {
-      const input = document.getElementById("password").value;
-      const encodedInput = btoa(input);
-      if (encodedInput === encodedPass) {
-        const lock = document.getElementById("lockscreen");
-        lock.style.transition = "opacity 1s ease";
-        lock.style.opacity = 0;
-        setTimeout(() => lock.style.display = "none", 1000);
-        document.body.style.overflow = "auto";
-      } else {
-        alert("Incorrect password!");
-      }
-    }
+const encodedPass = "a2lyYTIwMjU="; // Base64 of "kira2025"
+
 const validNames = [
   "⬛ ╠║╣ ⱠI₲₥₳ ⬛",
   "⬛ ╔║╗ ₳IĐɆ₦ ⬛",
@@ -528,12 +514,26 @@ const validNames = [
   "⬛ ╔║╗₦ɄĐɆⱠ₴Ʉ₱₱Ɇ ⬛"
 ];
 
-function givePassword() {
-  const input = prompt("Enter your cult name in discord:");
-  if (input && validNames.includes(input.trim())) {
-    alert(" 💀Welcome cultist,Your code is: kira2025💀");
+function checkPassword() {
+  const input = document.getElementById("password").value;
+  const encodedInput = btoa(input);
+  if (encodedInput === encodedPass) {
+    const lock = document.getElementById("lockscreen");
+    lock.style.transition = "opacity 1s ease";
+    lock.style.opacity = 0;
+    setTimeout(() => lock.style.display = "none", 1000);
+    document.body.style.overflow = "auto";
   } else {
-    alert("⬛️ Access denied. Name not found.⬛️");
+    alert("❌ Incorrect password!");
+  }
+}
+
+function givePassword() {
+  const input = prompt("🔒 Enter your Discord cult name:");
+  if (input && validNames.includes(input.trim())) {
+    alert("💀 Welcome cultist.💀 Your secret code is:\nkira2025");
+  } else {
+    alert("❌ Access denied. Name not found.");
   }
 }
 
