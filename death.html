@@ -131,7 +131,59 @@
         transform: translateY(0);
       }
     } 
+    .code-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+}
 
+.code-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  color: white;
+  padding: 20px;
+  border: 2px solid #333;
+  z-index: 9999;
+  width: 300px;
+  text-align: center;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+.code-panel input {
+  width: 80%;
+  padding: 8px;
+  margin: 10px 0;
+  background: #222;
+  border: 1px solid #555;
+  color: white;
+}
+
+.code-panel button {
+  padding: 8px 16px;
+  background: #222;
+  border: 1px solid #555;
+  color: white;
+  cursor: pointer;
+}
+
+.close-code {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  color: #999;
+  font-size: 18px;
+}
     @keyframes glitchEffect {
   0% { text-shadow: 2px 2px 5px red, -2px -2px 5px darkred; }
   25% { text-shadow: -2px -2px 5px crimson, 2px 2px 5px darkred; }
@@ -336,7 +388,18 @@ h2::after {
     <p>Enter password to continue:</p>
     <input type="password" id="password" placeholder="••••••">
     <button class="btn" onclick="checkPassword()">Enter</button>
-    <p style="margin-top: 20px; cursor: pointer; font-style: italic; color: darkred; text-shadow: 0 0 5px red;" onclick="givePassword()">💀 Show me the Truth 💀</p>
+    <button class="code-button">passkey</button>
+
+    <div class="code-panel" style="display: none;">
+      <div class="code-header">
+        <span class="close-code">&times;</span>
+        <h2>Enter Your Name</h2>
+      </div>
+      <input type="text" id="nameInput" placeholder="Your name">
+      <button onclick="checkName()">Submit</button>
+      <div id="codeResult"></div>
+    </div>
+    
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
   </div>
   <div class="overlay"></div>
@@ -492,9 +555,9 @@ h2::after {
     });
     window.onload = applySettings;
 
-const encodedPass = "a2lyYTIwMjU="; // Base64 of "kira2025"
+    const encodedPass = "a2lyYTIwMjU="; // Base64 of "kira2025"
 
-const validNames = [
+const nameInput = [
   "⬛ ╠║╣ ⱠI₲₥₳ ⬛",
   "⬛ ╔║╗ ₳IĐɆ₦ ⬛",
   "⬛ ╚║╝ FɆⱤI₮ ⬛",
@@ -528,14 +591,29 @@ function checkPassword() {
   }
 }
 
-function givePassword() {
-  const input = prompt("🔒 Enter your Discord cult name:");
-  if (input && validNames.includes(input.trim())) {
-    alert("💀 Welcome cultist.💀 Your secret code is:\nkira2025");
+document.querySelector('.code-button').addEventListener('click', () => {
+  document.querySelector('.code-panel').style.display = 'block';
+});
+
+document.querySelector('.close-code').addEventListener('click', () => {
+  document.querySelector('.code-panel').style.display = 'none';
+  document.getElementById('nameInput').value = '';
+  document.getElementById('codeResult').innerHTML = '';
+});
+
+function checkName() {
+  const name = document.getElementById('nameInput').value.trim();
+  const result = document.getElementById('codeResult');
+
+  if (nameInput.includes(name)) {
+    result.innerHTML = `<p><strong>Code:</strong> kira2025</p><p>Please refresh the site and log in again.</p>`;
   } else {
-    alert("❌ Access denied. Name not found.");
+    result.innerHTML = `<p style="color:red;">Name not recognized.</p>`;
   }
 }
+
+
+
 
     function hideSections() {
       document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
